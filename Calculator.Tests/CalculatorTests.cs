@@ -1,3 +1,5 @@
+using Microsoft.VisualStudio.TestPlatform.TestHost;
+
 namespace Calculator.Tests;
 
 public class CalculatorTests
@@ -39,5 +41,16 @@ public class CalculatorTests
     {
         Assert.Throws<Exception>(() => Evaluator.Eval("%", 6, 2));
     }
+
+    [Fact]
+    public void TestExitCase()
+    {
+        StringReader sr = new StringReader("4"); 
+        Console.SetIn(sr);
+        Assert.Equal(false,Program.execute);
+    }
+
+
+
 
 }
